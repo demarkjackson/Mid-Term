@@ -1,1 +1,63 @@
-# Mid-Term
+class ATM:
+    def __init__(self, balance=1000, pin="1234"):
+        self.balance = balance
+        self.pin = pin
+        
+    def authenticate(self):
+        attempts = 3
+        while attempts > 0:
+            entered_pin = input("Enter your PIN: ")
+            if entered_pin == self.pin:
+                print("✅ Access granted\n")
+                return True
+            else:
+                attempts -= 1
+                print(f" Incorrect PIN. Attempts left: {attempts}")
+        print(" Card blocked.")
+        return False
+    def check_balance(self):
+        print(f" Current balance: ${self.balance}")
+
+    def deposit(self):
+        amount = float(input("Enter deposit amount: "))
+        if amount > 0:
+            self.balance += amount
+            print(f"✅ Deposited ${amount}")
+        else:
+            print(" Invalid amount")
+
+    def withdraw(self):
+        amount = float(input("Enter withdrawal amount: "))
+        if 0 < amount <= self.balance:
+            self.balance -= amount
+            print(f"✅ Withdrawn ${amount}")
+        else:
+            print(" brokie or invalid amount")
+
+    def menu(self):
+        while True:
+            print("""
+1. Check Balance
+2. Deposit
+3. Withdraw
+4. Exit
+""")
+            choice = input("Choose an option: ")
+
+if choice == "1":
+                self.check_balance()
+            elif choice == "2":
+                self.deposit()
+            elif choice == "3":
+                self.withdraw()
+            elif choice == "4":
+                print(" Thank you for using the ATM Twin")
+                break
+            else:
+                print(" Invalid selection")
+
+
+if __name__ == "__main__":
+    atm = ATM()
+    if atm.authenticate():
+        atm.menu()
