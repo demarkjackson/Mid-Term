@@ -2,7 +2,7 @@ class ATM:
     def __init__(self, balance=1000, pin="1234"):
         self.balance = balance
         self.pin = pin
-        
+
     def authenticate(self):
         attempts = 3
         while attempts > 0:
@@ -15,6 +15,7 @@ class ATM:
                 print(f" Incorrect PIN. Attempts left: {attempts}")
         print(" Card blocked.")
         return False
+
     def check_balance(self):
         print(f" Current balance: ${self.balance}")
 
@@ -44,7 +45,7 @@ class ATM:
 """)
             choice = input("Choose an option: ")
 
-if choice == "1":
+            if choice == "1":
                 self.check_balance()
             elif choice == "2":
                 self.deposit()
